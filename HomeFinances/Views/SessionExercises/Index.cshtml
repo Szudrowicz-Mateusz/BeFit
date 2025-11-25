@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HomeFinances.Models.SessionExercise>
+
+@{
+    ViewData["Title"] = "Dziennik Serii";
+}
+
+<h1 class="title">Dziennik Wykonanych Ćwiczeń</h1>
+
+<p class="block">
+    <a asp-action="Create" class="button is-primary">
+        <span class="icon"><i class="fas fa-plus"></i></span>
+        <span>Dodaj wykonaną serię</span>
+    </a>
+</p>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TrainingSession)</th>
+            <th>@Html.DisplayNameFor(model => model.ExerciseType)</th>
+            <th>@Html.DisplayNameFor(model => model.Load)</th>
+            <th>@Html.DisplayNameFor(model => model.Series)</th>
+            <th>@Html.DisplayNameFor(model => model.Repetitions)</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainingSession.StartDateTime)
+                </td>
+                <td>
+                    <strong>@Html.DisplayFor(modelItem => item.ExerciseType.Name)</strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Load) kg
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Series)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Repetitions)
+                </td>
+                <td>
+                    <div class="buttons are-small">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="button is-warning">
+                            <span class="icon"><i class="fas fa-edit"></i></span>
+                            <span>Edytuj</span>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="button is-danger">
+                            <span class="icon"><i class="fas fa-trash"></i></span>
+                            <span>Usuń</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

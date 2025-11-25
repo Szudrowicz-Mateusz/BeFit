@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BeFit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Drobna poprawka, żeby ikony miały odstęp od tekstu */
+        .navbar-item .icon { margin-right: 0.3rem; }
+        /* Odsunięcie głównej treści od navbara */
+        main.section { min-height: 80vh; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar is-primary has-shadow" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item is-size-4 has-text-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                        <span class="icon is-medium">
+                            <i class="fas fa-dumbbell"></i>
+                        </span>
+                        <span>BeFit</span>
+                    </a>
+
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" asp-controller="ExerciseTypes" asp-action="Index">
+                            <span class="icon"><i class="fas fa-list"></i></span>
+                            <span>Baza Ćwiczeń</span>
+                        </a>
+
+                        <a class="navbar-item" asp-controller="TrainingSessions" asp-action="Index">
+                            <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                            <span>Moje Treningi</span>
+                        </a>
+
+                        <a class="navbar-item" asp-controller="SessionExercises" asp-action="Index">
+                            <span class="icon"><i class="fas fa-pen-to-square"></i></span>
+                            <span>Dziennik Serii</span>
+                        </a>
+
+                        <a class="navbar-item" asp-controller="Statistics" asp-action="Index">
+                            <span class="icon"><i class="fas fa-chart-line"></i></span>
+                            <span>Statystyki</span>
+                        </a>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <a class="button is-danger is-light is-small" asp-controller="Roles" asp-action="Index">
+                                <span class="icon"><i class="fas fa-user-shield"></i></span>
+                                <span>ADMIN SETUP</span>
+                            </a>
+                        </div>
+
+                        <div class="navbar-item">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="section">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer has-background-light">
+        <div class="content has-text-centered">
+            <p>
+                <strong>BeFit</strong> by Mateusz Szudrowicz. <br>
+                &copy; 2025 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('#navbarMenu');
+
+            if (burger && menu) {
+                burger.addEventListener('click', () => {
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

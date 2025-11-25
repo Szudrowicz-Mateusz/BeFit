@@ -1,0 +1,54 @@
+﻿@model HomeFinances.Models.SessionExercise
+
+@{
+    ViewData["Title"] = "Usuń serię";
+}
+
+<h1>Usuń wpis</h1>
+
+<h3>Czy na pewno chcesz usunąć tę serię ćwiczeń?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TrainingSession)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TrainingSession.StartDateTime)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ExerciseType)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ExerciseType.Name)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Load)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Load) kg
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Repetitions)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Repetitions)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+    </form>
+</div>

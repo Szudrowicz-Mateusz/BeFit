@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HomeFinances.Models.TrainingSession>
+
+@{
+    ViewData["Title"] = "Moje Treningi";
+}
+
+<h1 class="title">Moje Sesje Treningowe</h1>
+
+<p class="block">
+    <a asp-action="Create" class="button is-success">
+        <span class="icon"><i class="fas fa-stopwatch"></i></span>
+        <span>Rozpocznij nową sesję</span>
+    </a>
+</p>
+
+<table class="table is-fullwidth is-striped is-hoverable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.StartDateTime)</th>
+            <th>@Html.DisplayNameFor(model => model.EndDateTime)</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span class="icon-text">
+                        <span class="icon"><i class="fas fa-play-circle has-text-success"></i></span>
+                        <span>@Html.DisplayFor(modelItem => item.StartDateTime)</span>
+                    </span>
+                </td>
+                <td>
+                    <span class="icon-text">
+                        <span class="icon"><i class="fas fa-stop-circle has-text-danger"></i></span>
+                        <span>@Html.DisplayFor(modelItem => item.EndDateTime)</span>
+                    </span>
+                </td>
+                <td>
+                    <div class="buttons are-small">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="button is-warning">
+                            <span class="icon"><i class="fas fa-edit"></i></span>
+                            <span>Edytuj</span>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="button is-danger">
+                            <span class="icon"><i class="fas fa-trash"></i></span>
+                            <span>Usuń</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
