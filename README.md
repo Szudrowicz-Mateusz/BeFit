@@ -26,10 +26,10 @@ Wyloguj się i zaloguj ponownie. Uwaga: Jest to konieczne, aby odświeżyć cias
 
 Po ponownym zalogowaniu masz pełne uprawnienia administracyjne.
 
-### Realizacja wymagań (Kryteria oceny)
+## Realizacja wymagań (Kryteria oceny)
 Projekt spełnia wszystkie punkty określone w zadaniu:
 
-1. Modele
+#### 1. Modele
 Zaimplementowano trzy wymagane modele z pełną walidacją (atrybuty Required, Range, MaxLength) oraz polskimi etykietami (Display):
 
 ExerciseType: Typ ćwiczenia (Nazwa).
@@ -38,14 +38,14 @@ TrainingSession: Sesja treningowa (Data start/stop, powiązanie z Użytkownikiem
 
 SessionExercise: Ćwiczenie w sesji (Obciążenie, serie, powtórzenia, powiązania).
 
-2. Typy ćwiczeń (Baza Ćwiczeń)
+#### 2. Typy ćwiczeń (Baza Ćwiczeń)
 Kontroler: ExerciseTypesController
 
 Widok: Lista ćwiczeń jest dostępna publicznie dla wszystkich.
 
 Uprawnienia: Akcje Create, Edit, Delete są zabezpieczone atrybutem [Authorize(Roles = "Administrator")] i niewidoczne dla zwykłych użytkowników.
 
-3. Sesje treningowe (Moje Treningi)
+#### 3. Sesje treningowe (Moje Treningi)
 Kontroler: TrainingSessionsController
 
 Izolacja danych: Użytkownik ma dostęp (odczyt/edycja/usuwanie) wyłącznie do własnych sesji.
@@ -54,21 +54,21 @@ Automatyzacja: Podczas tworzenia sesji UserId jest pobierany dynamicznie z konte
 
 Bezpieczeństwo: Backend weryfikuje własność rekordu przy każdej operacji.
 
-4. Ćwiczenia w sesji (Dziennik Serii)
+#### 4. Ćwiczenia w sesji (Dziennik Serii)
 Kontroler: SessionExercisesController
 
 UX: Formularze wykorzystują listy rozwijane z czytelnymi nazwami (zamiast ID).
 
 Logika: Można dodać serię tylko do sesji należącej do zalogowanego użytkownika. Zabezpieczono przed edycją cudzych wpisów.
 
-5. Widoki i Layout
+#### 5. Widoki i Layout
 Projekt wykorzystuje framework Bulma dla nowoczesnego wyglądu.
 
 Wszystkie widoki posiadają czytelne etykiety w języku polskim.
 
 Nawigacja jest intuicyjna i wzbogacona o ikony.
 
-6. Statystyki
+#### 6. Statystyki
 Kontroler: StatisticsController
 
 Logika: Dane są pobierane i obliczane jednym zapytaniem LINQ.
